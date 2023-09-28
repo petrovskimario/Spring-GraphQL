@@ -1,0 +1,15 @@
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    password: postgres
+    username: postgres
+    url: jdbc:postgresql://localhost:5433/graphql
