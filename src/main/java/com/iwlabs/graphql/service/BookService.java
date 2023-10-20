@@ -9,7 +9,7 @@ import java.util.Map;
 public interface BookService {
     List<Book> findAll();
 
-    Book createBook(String name);
+    Book createBook(String name,List<String> authorNames);
 
     Book findById(Integer id);
 

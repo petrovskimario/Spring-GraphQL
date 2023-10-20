@@ -8,7 +8,9 @@ import com.iwlabs.graphql.repository.BookRepository;
 import com.iwlabs.graphql.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,10 +32,21 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book createBook(String name) {
+    public Book createBook(String name,List<String> authorNames) {
         Book book = new Book();
         book.setName(name);
-        return repository.save(book);
+        repository.save(book);
+        List<Author> authors;
+        if(!CollectionUtils.isEmpty(authorNames)) {
+             authors = authorNames.stream().map(authorName -> {
+                Author author = new Author();
+                author.setName(authorName);
+                author.setBook(book);
+                return author;
+            }).collect(Collectors.toList());
+            authorRepository.saveAll(authors);
+        }
+        return book;
     }
 
     @Override

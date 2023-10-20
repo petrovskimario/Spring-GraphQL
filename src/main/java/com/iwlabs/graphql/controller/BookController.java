@@ -33,8 +33,8 @@ public class BookController {
     }
 
     @MutationMapping
-    public Book createBook(@Argument String name) {
-        return bookService.createBook(name);
+    public Book createBook(@Argument String name,@Argument List<String> authorNames) {
+        return bookService.createBook(name,authorNames);
     }
 
     @MutationMapping

@@ -73,6 +73,17 @@ mutation{
   }
 }
 
+Create Book with new Authors : 
+
+mutation {
+  createBook(name: "Your Book Name", authorNames: ["Author 1", "Author 2"]) {
+    id
+    name
+    # Add any other fields you want to retrieve from the created book
+  }
+}
+
+
 Update Book : 
 
 mutation{
