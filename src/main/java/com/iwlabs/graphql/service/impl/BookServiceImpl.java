@@ -36,9 +36,8 @@ public class BookServiceImpl implements BookService {
         Book book = new Book();
         book.setName(name);
         repository.save(book);
-        List<Author> authors;
         if(!CollectionUtils.isEmpty(authorNames)) {
-             authors = authorNames.stream().map(authorName -> {
+            List<Author> authors = authorNames.stream().map(authorName -> {
                 Author author = new Author();
                 author.setName(authorName);
                 author.setBook(book);
