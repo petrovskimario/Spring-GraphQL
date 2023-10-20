@@ -1,12 +1,19 @@
 type Book {
     id: ID!
     name: String
+    authors: [Author]
+}
+
+type Author {
+    id: ID!
+    name: String
 }
 
 
 type Query {
     getAllBooks: [Book]
     getById(id: ID!): Book
+    getByName(name: String) : String
 }
 
 type Mutation {
